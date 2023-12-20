@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: fbc-sample-repo-rwbg
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: fbc-sample-repo-rwbg
+    app.kubernetes.io/part-of: fbc-hotfix-aplication
+  name: fbc-sample-repo-rwbg
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: fbc
+      app.kubernetes.io/instance: fbc-sample-repo-rwbg
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: fbc
+        app.kubernetes.io/instance: fbc-sample-repo-rwbg
+    spec:
+      containers:
+      - image: quay.io/redhat-user-workloads-stage/dev-release-team-tenant/fbc-hotfix-aplication/fbc-sample-repo-rwbg@sha256:444dc7f2899a474ce46a5ffb48a9852861bc3b5ff5ec28320ebe958b0992ba40
+        name: fbc
+        ports:
+        - containerPort: 50051
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 512Mi
+status: {}
