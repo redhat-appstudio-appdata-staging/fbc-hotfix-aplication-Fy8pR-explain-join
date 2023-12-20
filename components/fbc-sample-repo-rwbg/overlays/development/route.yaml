@@ -1,0 +1,22 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: fbc-sample-repo-rwbg
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: fbc-sample-repo-rwbg
+    app.kubernetes.io/part-of: fbc-hotfix-aplication
+  name: fbc-sample-repo-rwbg4p2o
+spec:
+  port:
+    targetPort: 50051
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: fbc-sample-repo-rwbg
+    weight: 100
+status: {}
